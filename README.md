@@ -58,6 +58,16 @@ chat-db 是一款将自然语言转sql的数据库工具，允许用户通过界
 
 ## 功能演示
 ![DB AI Assistant 演示](demo.gif)
+![img.png](img.png)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)
+![img_5.png](img_5.png)
+![img_6.png](img_6.png)
+![img_7.png](img_7.png)
+![img_8.png](img_8.png)
+![img_9.png](img_9.png)
 
 ## 使用说明
 
@@ -109,4 +119,7 @@ npm run build
 
 ## 许可证
 
+## 开发说明
+ 
+目前只是初期阶段，后续该工具会更加完善，欢迎大家参与开发。
 MIT 
