@@ -1,6 +1,6 @@
-# DB AI Assistant
+# chat-db
 
-DB AI Assistant 是一款类似 Chat2DB-AI 的数据库工具，允许用户通过界面连接到 MySQL 数据库，并使用自然语言生成 SQL 查询。
+chat-db 是一款将自然语言转sql的数据库工具，允许用户通过界面连接到 MySQL 数据库，并使用自然语言生成 SQL 查询。你能使用navicat用的也能在这块工具上免费使用
 
 ## 功能特点
 
