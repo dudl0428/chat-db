@@ -1,0 +1,534 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #001529;
+  color: white;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  background-color: #fff;
+  padding: 0 20px;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.content-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Database tree styles */
+.db-tree {
+  padding: 10px 0;
+}
+
+.db-tree .ant-tree-treenode {
+  padding: 4px 0;
+}
+
+/* Connection form styles */
+.connection-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Monaco editor styles */
+.monaco-editor-container {
+  height: 300px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+/* Chat interface styles */
+.chat-interface {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.message {
+  margin-bottom: 16px;
+  max-width: 80%;
+}
+
+.user-message {
+  margin-left: auto;
+  background-color: #1890ff;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 18px 18px 0 18px;
+}
+
+.ai-message {
+  background-color: white;
+  padding: 10px 16px;
+  border-radius: 18px 18px 18px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-container {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 数据库表格样式 */
+.db-table {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.db-table .ant-table-thead > tr > th {
+  background-color: #f0f2f5;
+  padding: 8px;
+  font-weight: 600;
+}
+
+.db-table .ant-table-tbody > tr > td {
+  padding: 6px 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.db-table .ant-table-tbody > tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.db-table .ant-table-tbody > tr:hover {
+  background-color: #e6f7ff;
+}
+
+.field-type-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  vertical-align: middle;
+  display: inline-block;
+  color: #666;
+}
+
+/* 数据库表结构样式 */
+.table-structure .ant-tabs-nav {
+  margin-bottom: 8px;
+}
+
+.table-structure .ant-table-thead > tr > th {
+  background-color: #f0f2f5;
+  padding: 8px;
+  font-weight: 600;
+}
+
+.table-structure .ant-tabs-tab {
+  padding: 6px 12px;
+}
+
+/* 数据库对象树样式 */
+.database-tree .ant-tree-treenode {
+  padding: 4px 0;
+}
+
+.database-tree .ant-tree-node-content-wrapper {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 右键菜单样式 */
+.context-menu {
+  z-index: 1000;
+  min-width: 160px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 表格工具栏样式 */
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.table-toolbar .ant-btn {
+  margin-right: 4px;
+}
+
+/* 使用Navicat风格的配色 */
+.database-header {
+  background-color: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.navicat-primary-color {
+  color: #1890ff;
+}
+
+.navicat-bg-primary {
+  background-color: #1890ff;
+}
+
+/* 表格数据单元格样式 */
+.cell-null {
+  color: #999;
+  font-style: italic;
+}
+
+.cell-number {
+  color: #1677ff;
+}
+
+.cell-string {
+  color: #000;
+}
+
+.cell-datetime {
+  color: #722ed1;
+}
+
+/* 数据库导航菜单样式 */
+.db-sidebar {
+  border-right: 1px solid #f0f0f0;
+  height: 100%;
+}
+
+.db-sidebar .ant-menu-item {
+  height: 32px;
+  line-height: 32px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .table-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .table-toolbar .ant-btn {
+    margin-bottom: 4px;
+  }
+}
+
+/* Navicat 风格树结构 */
+.navicat-tree {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.navicat-tree .ant-tree-node-content-wrapper {
+  padding: 2px 8px;
+  transition: all 0.2s;
+}
+
+.navicat-tree .ant-tree-treenode {
+  padding: 2px 0;
+  width: 100%;
+}
+
+.navicat-tree .ant-tree-node-content-wrapper:hover {
+  background-color: #e6f7ff;
+}
+
+.navicat-tree .ant-tree-node-selected {
+  background-color: #bae7ff !important;
+}
+
+/* 表和视图文件夹样式 */
+.navicat-tree .ant-tree-title {
+  font-size: 13px;
+}
+
+/* 减少表项之间的间距 */
+.navicat-tree .ant-tree-list-holder-inner {
+  padding: 0;
+}
+
+/* 表项图标样式 */
+.navicat-tree .ant-tree-iconEle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 表示为选中状态的节点 */
+.navicat-tree .ant-tree-node-selected .ant-tree-title {
+  font-weight: 500;
+}
+
+/* 右键菜单样式 */
+.context-menu {
+  min-width: 160px;
+}
+
+.context-menu .ant-dropdown-menu {
+  border-radius: 4px;
+  padding: 4px 0;
+  list-style: none;
+  margin: 0;
+}
+
+.context-menu .ant-dropdown-menu-item {
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 13px;
+  clear: both;
+  white-space: nowrap;
+}
+
+.context-menu .ant-dropdown-menu-item:hover {
+  background-color: #f5f5f5;
+}
+
+/* Navicat 风格表格样式 */
+.navicat-table {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.navicat-table .ant-table-thead > tr > th {
+  background-color: #f0f2f5;
+  font-weight: bold;
+  padding: 8px;
+  border-color: #e8e8e8;
+}
+
+.navicat-table .ant-table-tbody > tr > td {
+  padding: 6px 8px;
+  border-color: #e8e8e8;
+}
+
+.navicat-table .ant-table-tbody > tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.navicat-table .ant-table-tbody > tr:hover > td {
+  background-color: #e6f7ff;
+}
+
+/* 数据单元格样式 */
+.cell-null {
+  color: #a0a0a0;
+  font-style: italic;
+}
+
+.cell-number {
+  color: #0066cc;
+  text-align: right;
+}
+
+.cell-string {
+  color: #454545;
+}
+
+.cell-datetime {
+  color: #009688;
+}
+
+/* 表格工具栏样式 */
+.table-toolbar {
+  margin-bottom: 8px;
+}
+
+.table-toolbar .ant-btn {
+  padding: 0 8px;
+  height: 28px;
+}
+
+/* 数据库侧边栏 */
+.db-sidebar {
+  background-color: #f7f7f7;
+  border-right: 1px solid #e8e8e8;
+}
+
+.db-sidebar .ant-card-head {
+  padding: 0 12px;
+  min-height: 40px;
+  line-height: 40px;
+  background-color: #f0f2f5;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.db-sidebar .ant-card-head-title {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+}
+
+/* 表格结构页样式 */
+.table-structure .table-tabs {
+  margin-bottom: 12px;
+}
+
+.table-structure .ant-tabs-nav {
+  margin-bottom: 12px;
+}
+
+.structure-table .ant-table-tbody > tr > td {
+  vertical-align: middle;
+}
+
+/* 表格边框 */
+.navicat-table {
+  border: 1px solid #e8e8e8;
+  border-radius: 2px;
+}
+
+/* 卡片标签页样式 */
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+  background-color: #f5f5f5;
+  border-color: #e8e8e8;
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
+  background-color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .db-sidebar {
+    width: 180px !important;
+  }
+  
+  .table-toolbar .ant-btn {
+    padding: 0 4px;
+  }
+}
+
+/* Navicat风格的标签页 */
+.navicat-tabs .ant-tabs-nav {
+  margin-bottom: 0;
+  background-color: #f0f2f5;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.navicat-tabs .ant-tabs-tab {
+  background-color: #e6e6e6;
+  border: 1px solid #d9d9d9;
+  margin-right: 2px;
+  transition: all 0.3s;
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  top: 1px;
+}
+
+.navicat-tabs .ant-tabs-tab-active {
+  background-color: #fff;
+  border-bottom-color: #fff;
+}
+
+.navicat-tabs .ant-tabs-content-holder {
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: none;
+}
+
+.navicat-tabs .ant-tabs-tab-btn {
+  color: #666;
+  font-size: 13px;
+}
+
+.navicat-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #1677ff;
+  font-weight: 500;
+}
+
+.navicat-tabs .ant-tabs-tab:hover {
+  background-color: #f5f5f5;
+}
+
+.navicat-tabs .ant-tabs-tab-remove {
+  margin-left: 6px;
+  color: #999;
+}
+
+.navicat-tabs .ant-tabs-nav-operations {
+  border-right: 1px solid #d9d9d9;
+}
+
+.navicat-tabs .ant-tabs-nav-add {
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+/* 标签页内容区域 */
+.navicat-tabs .ant-tabs-content {
+  height: 100%;
+  background-color: #fff;
+}
+
+.navicat-tabs .ant-tabs-tabpane {
+  padding: 0;
+}
+
+/* 滚动条样式 */
+.navicat-tabs ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.navicat-tabs ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.navicat-tabs ::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.navicat-tabs ::-webkit-scrollbar-thumb:hover {
+  background: #999;
+} 
